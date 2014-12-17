@@ -1,0 +1,901 @@
+/*
+Theme Name: Two Lucky Cats
+Theme URI: http://wordpress.org/
+Description: Based on 2010 theme version 1.4.
+Version: 1.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: two-columns, fixed-width, custom-header, custom-background, threaded-comments, sticky-post, translation-ready, microformats, rtl-language-support, editor-style, custom-menu
+Text Domain: two lucky cats
+*/
+/* =Reset default browser CSS. Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
+-------------------------------------------------------------- */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { background: transparent; border: 0; margin: 0; padding: 0; vertical-align: baseline; }
+body { line-height: 1; }
+h1, h2, h3, h4, h5, h6 { clear: both; font-weight: normal; }
+ol, ul { list-style: none; }
+blockquote { quotes: none; }
+blockquote:before, blockquote:after { content: ''; content: none; }
+del { text-decoration: line-through; }
+/* tables still need 'cellspacing="0"' in the markup */
+table { border-collapse: collapse; border-spacing: 0; }
+a img {	border: none; }
+/* =Layout -------------------------------------------------------------- */
+/*
+LAYOUT: Two columns
+DESCRIPTION: Two-column fixed layout with one sidebar right of content
+*/
+#container { float: left; margin: 0 -240px 0 0; width: 100%; }
+#content { margin: 0 280px 0 20px; }
+#primary, #secondary { float: right; overflow: hidden; width: 220px; }
+#secondary { clear: right; }
+#footer { clear: both; width: 100%; }
+/*
+LAYOUT: One column, no sidebar
+DESCRIPTION: One centered column with no sidebar
+*/
+.one-column #content { margin: 0 auto; width: 840px; }
+/*
+LAYOUT: Full width, no sidebar
+DESCRIPTION: Full width content with no sidebar; used for attachment pages
+*/
+.single-attachment #content { margin: 0 auto; width: 900px; }
+
+/* =Fonts
+-------------------------------------------------------------- */
+
+@font-face {
+font-family: 'Oswald';
+font-style: normal;
+font-weight: 400;
+src: local('Oswald '), local('Oswald'), url(http://themes.googleusercontent.com/static/fonts/oswald/v5/-g5pDUSRgvxvOl5u-a_WHw.woff) format('woff');
+}
+
+@font-face {
+font-family: 'Arvo';
+font-style: normal;
+font-weight: 400;
+src: local('Arvo'), url(http://themes.googleusercontent.com/static/fonts/arvo/v5/WJ6D195CfbTRlIs49IbkFw.woff) format('woff');
+}
+
+#site-title, h1, h2, h3, h4, h5, h6, #access a {
+	text-transform: uppercase;
+	font-family: 'Oswald', sans-serif;
+	}
+
+#wrapper {
+	font-family: Arial, Helvetica, sans-serif;
+}
+	
+/* =Structure
+-------------------------------------------------------------- */
+
+/* The main theme structure */
+#access .menu-header,
+#colophon,
+#branding,
+#main,
+#wrapper {
+	margin: 0 auto;
+	width: 940px;
+}
+#wrapper {
+	background: #FFFFBE;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 20px 20px 10px 20px;
+	border: solid 1px #fff;
+}
+
+/* Structure the footer area */
+#site-info {
+	float: left;
+	font-size: 14px;
+	font-weight: bold;
+	width: 700px;
+}
+#site-generator {
+	float: right;
+	width: 220px;
+}
+
+#site-copyright { 
+	float: left;
+	width: 220px;
+}
+
+/* =Global Elements
+-------------------------------------------------------------- */
+
+/* Main global 'theme' and typographic styles */
+body {
+	background: #AEF879;
+}
+body,
+input,
+textarea {
+	color: #222;
+	font-size: 14px;
+	line-height: 18px;
+}
+hr {
+	border: 0;
+	clear: both;
+	height: 1px;
+	margin-bottom: 18px;
+}
+
+/* Text elements */
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+	color: #2483A6;
+	letter-spacing: 1px;
+	font-weight: bold;
+}
+h1 {
+	font-size: 2em;
+}
+
+h2 {
+	font-size: 2.4em;
+}
+
+h3 {
+	font-size: 1.6em;
+}
+	
+p {
+	margin-bottom: 18px;
+}
+ul {
+	list-style: square;
+	margin: 0 0 18px 1.5em;
+}
+ol {
+	list-style: decimal;
+	margin: 0 0 18px 1.5em;
+}
+
+p, ul, ol {
+	margin-top: 0;
+	line-height: 180%;
+} 
+
+ul ul {
+	margin-bottom: 0;
+}
+dl {
+	margin: 0 0 24px 0;
+}
+dt {
+	font-weight: bold;
+}
+dd {
+	margin-bottom: 18px;
+}
+strong {
+	font-weight: bold;
+}
+cite,
+em,
+i {
+	font-style: italic;
+}
+big {
+	font-size: 131.25%;
+}
+blockquote {
+	font-style: italic;
+	padding: 0 3em;
+}
+
+input[type="text"],
+textarea {
+	background: #f9f9f9;
+	border: 1px solid #ccc;
+	padding: 2px;
+}
+a:link {
+	text-decoration: none;
+	color: #222;
+	font-weight: bold;
+}
+a:visited {
+	color: #743399;
+}
+a:active,
+a:hover {
+	color: #E91370;
+}
+
+/* This makes sure all images have this border. */
+a img {
+	border: 1px solid #996600;
+}
+
+/* Text meant only for screen readers */
+.screen-reader-text {
+	position: absolute;
+	left: -9000px;
+}
+
+
+/* =Header
+-------------------------------------------------------------- */
+
+#header {
+	padding: 30px 0 0 0;
+}
+#site-title {
+	padding: 40px 0 5px 0;
+	float: left;
+	font-size: 54px;
+	line-height: 36px;
+	width: 960px;
+	margin: 0px;
+	letter-spacing: -1px;
+	text-align: center;
+	font-weight: bold;
+	color: #444444;
+}
+
+#site-title a {
+	color: #E91370;
+	text-decoration: none;
+}
+#site-description {
+	float: left;
+	text-align: center;
+	margin: 15px 0 25px 0;
+	width: 960px;
+	text-transform: uppercase;
+	font-family: 'Arvo', serif;
+	font-size: 20px;
+	color: #996600;
+}
+
+/* This is the custom header image */
+#branding img {
+	border-radius: 8px;
+	display: block;
+	float: left;
+}
+
+
+/* =Menu
+-------------------------------------------------------------- */
+
+#access {
+	margin: 0 auto;
+	width: 100%;
+}
+
+#access .menu-header ul {
+	list-style: none;
+	line-height: normal;
+	margin: 0;
+	padding: 10px 0 10px 0;
+	text-align: center;
+}
+#access .menu-header li {
+	display: inline;
+}
+#access a {
+	margin: 0;
+	padding: 10px;
+	line-height: 56px;
+	letter-spacing: 2px;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: normal;
+	color: #262626;
+}
+
+#access li:hover > a,
+#access .current_page_item a {
+	background: #E91370;
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+
+/* =Content
+-------------------------------------------------------------- */
+
+#main {
+	clear: both;
+	overflow: hidden;
+	padding: 40px 0 0 0;
+}
+#content {
+	margin-bottom: 36px;
+}
+#content,
+#content input,
+#content textarea {
+	color: #333;
+	font-size: 18px;
+	line-height: 24px;
+}
+#content p,
+#content ul {
+	margin-bottom: 24px;
+}
+
+#content h1,
+#content h2,
+#content h3 {
+	color: #222;
+	line-height: 1.5em;
+	margin: 0 0 20px 0;
+}
+
+#content table {
+	border: 1px solid #996600;
+	margin: 0 -1px 24px 0;
+	text-align: left;
+	width: 100%;
+}
+
+.hentry {
+	margin: 0 0 48px 0;
+}
+
+.entry-title a:link,
+.entry-title a:visited,
+.entry-meta a,
+.entry-utility a {
+	color: #E91370;
+	text-decoration: none;
+}
+
+.entry-title a:active,
+.entry-title a:hover, 
+.entry-meta a:hover,
+.entry-utility a:hover {
+	text-decoration: underline;
+}
+
+#content .entry-title {
+	font-size: 2em;
+	line-height: 1.3em;
+	margin-bottom: 0;
+	padding-top: 10px;
+	letter-spacing: -1px;
+}
+
+.entry-meta {
+	font-size: 12px;
+}
+
+.entry-content {
+	clear: both;
+	padding: 12px 0 0 0;
+}
+
+.entry-content input {
+	margin: 0 0 24px 0;
+}
+
+.entry-utility {
+	clear: both;
+	font-size: 12px;
+	line-height: 18px;
+}
+
+#content .video-player { padding: 0; }
+
+/* =Gallery listing
+-------------------------------------------------------------- */
+
+.format-gallery .size-thumbnail img,
+.category-gallery .size-thumbnail img { margin-bottom: 0; }
+
+.format-gallery .gallery-thumb,
+.category-gallery .gallery-thumb {
+	float: left;
+	margin-right: 20px;
+	margin-top: -4px;
+}
+
+.home #content .format-gallery .entry-utility,
+.home #content .category-gallery .entry-utility { padding-top: 4px; }
+
+
+/* =Attachment pages
+-------------------------------------------------------------- */
+
+.attachment .entry-content .entry-caption {
+	font-size: 140%;
+	margin-top: 24px;
+}
+.attachment .entry-content .nav-previous a:before {
+	content: '\2190\00a0';
+}
+.attachment .entry-content .nav-next a:after {
+	content: '\00a0\2192';
+}
+
+
+/* =Images
+-------------------------------------------------------------- */
+
+/*
+Resize images to fit the main content area.
+- Applies only to images uploaded via WordPress by targeting size-* classes.
+- Other images will be left alone. Use "size-auto" class to apply to other images.
+*/
+img.size-auto,
+img.size-full,
+img.size-large,
+img.size-medium,
+.attachment img {
+	max-width: 100%; /* When images are too wide for containing element, force them to fit. */
+	height: auto; /* Override height to match resized width for correct aspect ratio. */
+	
+}
+.alignleft,
+img.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 24px;
+	margin-top: 4px;
+}
+.alignright,
+img.alignright {
+	display: inline;
+	float: right;
+	margin-left: 24px;
+	margin-top: 4px;
+}
+.aligncenter,
+img.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+img.alignleft,
+img.alignright,
+img.aligncenter { margin-bottom: 10px; }
+
+.wp-caption {
+	line-height: 18px;
+	margin-bottom: 5px;
+	max-width: 632px !important; /* prevent too-wide images from breaking layout */
+	padding: 4px;
+	text-align: center;
+}
+
+.wp-caption img { margin: 5px 5px 0; }
+
+.wp-caption p.wp-caption-text {
+	color: #222;
+	font-size: 16px;
+	margin: 5px;
+}
+.wp-smiley { margin: 0; }
+
+.gallery { margin: 0 auto 18px; }
+
+.gallery .gallery-item {
+	float: left;
+	margin-top: 0;
+	text-align: center;
+	width: 33%;
+}
+
+.gallery-columns-2 .gallery-item { width: 50%; }
+
+.gallery-columns-4 .gallery-item { width: 25%; }
+
+.gallery img { border: 2px solid #996600; }
+
+.gallery-columns-2 .attachment-medium {
+	max-width: 92%;
+	height: auto;
+}
+
+.gallery-columns-4 .attachment-thumbnail {
+	max-width: 84%;
+	height: auto;
+}
+
+.gallery .gallery-caption {
+	color: #222;
+	font-size: 14px;
+	margin: 0 0 12px;
+}
+
+.gallery dl { margin: 0; }
+
+.gallery br+br { display: none; }
+
+#content .attachment img {/* single attachment images should be centered */
+	display: block;
+	margin: 0 auto;
+}
+
+/* =Comments
+-------------------------------------------------------------- */
+#comments { clear: both; }
+
+h3#comments-title,
+h3#reply-title {
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 0;
+}
+h3#comments-title {
+	padding: 24px 0;
+}
+.commentlist {
+	list-style: none;
+	margin: 0;
+}
+.commentlist li.comment {
+	border-bottom: 1px solid #996600;
+	line-height: 24px;
+	margin: 0 0 24px 0;
+	padding: 0 0 0 56px;
+	position: relative;
+}
+.commentlist li:last-child {
+	border-bottom: none;
+	margin-bottom: 0;
+}
+#comments .comment-body ul,
+#comments .comment-body ol {
+	margin-bottom: 18px;
+}
+#comments .comment-body p:last-child {
+	margin-bottom: 6px;
+}
+#comments .comment-body blockquote p:last-child {
+	margin-bottom: 24px;
+}
+.commentlist ol {
+	list-style: decimal;
+}
+.commentlist .avatar {
+	position: absolute;
+	top: 4px;
+	left: 0;
+}
+
+.comment-author cite {
+	font-style: normal;
+	font-weight: bold;
+}
+.comment-author .says {
+	font-style: italic;
+}
+.comment-meta {
+	font-size: 12px;
+	margin: 0 0 18px 0;
+}
+.comment-meta a:link,
+.comment-meta a:visited {
+	color: #E91370;
+	text-decoration: none;
+}
+.comment-meta a:active,
+.comment-meta a:hover { color: #ff4b33; }
+.reply {
+	font-size: 12px;
+	padding: 0 0 24px 0;
+}
+.reply a,
+a.comment-edit-link { color: #E91370; }
+.reply a:hover, 
+a.comment-edit-link:hover { color: #ff4b33; }
+.commentlist .children {
+	list-style: none;
+	margin: 0;
+}
+.commentlist .children li {
+	border: none;
+	margin: 0;
+}
+.nopassword,
+.nocomments { display: none; }
+#comments .pingback {
+	margin-bottom: 18px;
+	padding-bottom: 18px;
+}
+.commentlist li.comment+li.pingback { margin-top: -6px; }
+#comments .pingback p {
+	display: block;
+	font-size: 12px;
+	line-height: 18px;
+	margin: 0;
+}
+#comments .pingback .url {
+	font-size: 13px;
+	font-style: italic;
+}
+
+/* Comments form */
+input[type=submit] {
+	color: #333;
+}
+#respond {
+	border-top: 1px dashed #996600;
+	margin: 24px 0;
+	overflow: hidden;
+	position: relative;
+}
+#respond p {
+	margin: 0;
+}
+#respond .comment-notes {
+	margin-bottom: 1em;
+}
+.form-allowed-tags {
+	line-height: 1em;
+}
+.children #respond {
+	margin: 0 48px 0 0;
+}
+h3#reply-title {
+	margin: 18px 0;
+}
+#comments-list #respond {
+	margin: 0 0 18px 0;
+}
+#comments-list ul #respond {
+	margin: 0;
+}
+#cancel-comment-reply-link {
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 18px;
+}
+#respond .required {
+	text-decoration: underline;
+}
+#respond label {
+	color: #222;
+	font-size: 12px;
+}
+#respond input {
+	margin: 0 0 9px;
+	width: 98%;
+}
+#respond textarea {
+	width: 98%;
+}
+#respond .form-allowed-tags {
+	font-size: 12px;
+	line-height: 18px;
+}
+#respond .form-allowed-tags code { font-size: 11px; }
+#respond .form-submit { margin: 12px 0; }
+#respond .form-submit input {
+	font-size: 14px;
+	width: auto;
+}
+
+/* =Widget Areas
+-------------------------------------------------------------- */
+
+.widget-area ul {
+	list-style: none;
+	margin-left: 0;
+}
+.widget-area ul ul {
+	list-style: disc;
+	margin-left: 1.3em;
+}
+.widget-area select { max-width: 100%; }
+.widget_search #s {/* This keeps the search inputs in line */ width: 58%; }
+.widget_search label { display: none; }
+.widget-container { margin: 0 0 18px 0; }
+.widget-title {
+	height: 38px;
+	margin-bottom: 20px;
+	padding: 12px 0 0 0px;
+	letter-spacing: -1px;
+	font-size: 24px;
+	color: #E91370;
+	font-weight: bold;
+	width: 300px;
+	border-bottom: 1px dashed #996600;
+}
+.widget-area a:link,
+.widget-area a:visited { text-decoration: none; }
+.widget-area a:active,
+.widget-area a:hover, .widget_rss a.rsswidget:hover { text-decoration: underline; }
+#wp_tag_cloud div { line-height: 1.6em; }
+
+.widget_rss a.rsswidget {
+	color: #E91370;
+}
+
+.widget_rss .widget-title img {
+	width: 11px;
+	height: 11px;
+}
+
+/* Main sidebars */
+#main .widget-area ul {
+	margin-left: 0;
+	padding: 0 20px 0 0;
+}
+#main .widget-area ul ul {
+	border: none;
+	margin-left: 1.3em;
+	padding: 0;
+}
+
+/* =Footer
+-------------------------------------------------------------- */
+
+#footer {
+	font-size: 10px;
+}
+#colophon {
+	overflow: hidden;	
+}
+#site-info {
+	font-family: 'Oswald', sans-serif;
+}
+#site-generator {
+  padding-left: 60px;
+  margin-right: -30px;
+  
+}
+ #site-info a, 
+ #site-generator a {
+	text-decoration: none;
+	font-weight: normal;
+	color: #444;
+ }
+
+#site-info a {
+	color: #E91370;
+}
+
+#site-generator a {
+	background: url(images/wordpress.png) center left no-repeat;
+	padding-left: 20px;
+}
+#site-generator a:hover {
+	text-decoration: underline;
+}
+
+/* =Mobile Safari ( iPad, iPhone and iPod Touch )
+-------------------------------------------------------------- */
+
+pre {
+	-webkit-text-size-adjust: 140%;
+}
+code {
+	-webkit-text-size-adjust: 160%;
+}
+#access,
+.entry-meta,
+.entry-utility,
+.widget-area {
+	-webkit-text-size-adjust: 120%;
+}
+#site-description {
+	-webkit-text-size-adjust: none;
+}
+
+
+/* =Print Style
+-------------------------------------------------------------- */
+
+@media print {
+	body {
+		background: none !important;
+	}
+	#wrapper {
+		clear: both !important;
+		display: block !important;
+		float: none !important;
+		position: relative !important;
+	}
+	#header {
+		border-bottom: 2pt solid #222;
+		padding-bottom: 18pt;
+	}
+	#colophon {
+	}
+	#site-title,
+	#site-description {
+		float: none;
+		line-height: 1.4em;
+		margin: 0;
+		padding: 0;
+	}
+	#site-title {
+		font-size: 13pt;
+	}
+	.entry-content {
+		font-size: 14pt;
+		line-height: 1.6em;
+	}
+	.entry-title {
+		font-size: 21pt;
+	}
+	#access,
+	#branding img,
+	.widget-area {
+		display: none !important;
+	}
+	#container,
+	#header,
+	#footer {
+		margin: 0;
+		width: 100%;
+	}
+	#content,
+	.one-column #content {
+		margin: 24pt 0 0;
+		width: 100%;
+	}
+	.wp-caption p {
+		font-size: 11pt;
+	}
+	#site-info,
+	#site-generator {
+		float: none;
+		width: auto;
+	}
+	#colophon {
+		width: auto;
+	}
+	
+	#site-generator a {
+		margin: 0;
+		padding: 0;
+	}
+	
+	#main {
+		display: inline;
+	}
+}
+
+
+
+#welcome { 
+  border-bottom: 2px dashed #990099; 
+  margin-bottom: 5px;
+
+}
+
+#whoweare
+{
+width: 55%;
+padding-right: 3%;
+border-right: 2px dashed #990099;
+padding-top: 10px;
+float:left;
+} 
+
+#whatsnew {
+width: 40%;
+padding-left: 0%;
+padding-top: 10px;
+float: right;
+}
+
+#whoweare, #whatsnew h5, h6 {display: inline;}
+
+#header_icons {
+float:right;
+right: 13.5em;
+}
+
+#header_icons ul, li {
+list-style-type: none;
+display: inline;
+
+}
+
+#header_icons img { border: none; }
+
